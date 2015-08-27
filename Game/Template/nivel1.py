@@ -18,24 +18,13 @@ class Level_01(Level):
         #Cargamos la imagen de fondo.
         self.fondo = pygame.image.load("imagenes/Fondolevel1.png").convert()
         self.fondo.set_colorkey(constantes.BLANCO)
-        self.limite_nivel = -35000
+        self.limite_nivel = -33095
         
         sonido = pygame.mixer.Sound("sonido/Playa.ogg")
         sonido.play(-1)
 
         # Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
         nivel = [ [platforma.GRASS_LEFT, 500, 500],
-                  [platforma.GRASS_MIDDLE, 570, 500],
-                  [platforma.GRASS_RIGHT, 640, 500],
-                  [platforma.GRASS_LEFT, 800, 400],
-                  [platforma.GRASS_MIDDLE, 870, 400],
-                  [platforma.GRASS_RIGHT, 940, 400],
-                  [platforma.GRASS_LEFT, 1000, 500],
-                  [platforma.GRASS_MIDDLE, 1070, 500],
-                  [platforma.GRASS_RIGHT, 1140, 500],
-                  [platforma.STONE_PLATFORM_LEFT, 1120, 280],
-                  [platforma.STONE_PLATFORM_MIDDLE, 1190, 280],
-                  [platforma.STONE_PLATFORM_RIGHT, 1260, 280],
                   ]
 
         # Se busca en la lista anterior creada y se le agregan las plataformas al nivel.
@@ -46,7 +35,7 @@ class Level_01(Level):
             bloque.jugador = self.jugador
             self.lista_plataformas.add(bloque)
 
-        puntos = platforma.PlataformaConMovimiento(platforma.STONE_PLATFORM_MIDDLE)
+        puntos = platforma.PlataformaConMovimiento(platforma.GRASS_LEFT )
         puntos.rect.x = 350
         puntos.rect.y = 280
         puntos.limite_izquierdo = 350
@@ -57,7 +46,7 @@ class Level_01(Level):
         self.lista_de_cosas_con_puntitos.add(puntos)
 
         # Se agrega una plataforma en movimiento.
-        bloque = platforma.PlataformaConMovimiento(platforma.STONE_PLATFORM_MIDDLE)
+        bloque = platforma.PlataformaConMovimiento(platforma.GRASS_LEFT)
         bloque.rect.x = 1350
         bloque.rect.y = 280
         bloque.limite_izquierdo = 1350

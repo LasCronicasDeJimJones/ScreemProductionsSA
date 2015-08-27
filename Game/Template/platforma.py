@@ -1,4 +1,5 @@
 import pygame
+import constantes
 
 from funciones_spritesheet import SpriteSheet
 
@@ -10,13 +11,6 @@ from funciones_spritesheet import SpriteSheet
 #   Alto del sprite
 
 GRASS_LEFT            = (576, 720, 70, 70)
-GRASS_RIGHT           = (576, 576, 70, 70)
-GRASS_MIDDLE          = (504, 576, 70, 70)
-STONE_PLATFORM_LEFT   = (432, 720, 70, 40)
-STONE_PLATFORM_MIDDLE = (648, 648, 70, 40)
-STONE_PLATFORM_RIGHT  = (792, 648, 70, 40)
-LIMIT_PLATFORM_LEFT   = (0, 119, 1, 600)
-
 class Plataforma(pygame.sprite.Sprite):
     """ Clase que define las caracteristicas de la plataforma del juego. """
 
@@ -24,6 +18,7 @@ class Plataforma(pygame.sprite.Sprite):
         """ Plataforma constructor."""
         pygame.sprite.Sprite.__init__(self)
 
+        """
         sprite_sheet = SpriteSheet("imagenes/dibujo.png")
         # Grab the image for this platform
         self.image = sprite_sheet.obtener_imagen(sprite_sheet_data[0],
@@ -32,6 +27,12 @@ class Plataforma(pygame.sprite.Sprite):
                                             sprite_sheet_data[3])
 
         self.rect = self.image.get_rect()
+        """
+        plataforma_imagen  = pygame.image.load("imagenes/platform.png").convert()        
+        self.image = plataforma_imagen
+        self.image.set_colorkey(constantes.BLANCO)  
+        self.rect = self.image.get_rect()
+        
 
 
 class PlataformaConMovimiento(Plataforma):

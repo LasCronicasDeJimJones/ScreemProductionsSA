@@ -2,34 +2,6 @@ import pygame
 
 import constantes
 from nivel1 import Level_01
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 from jugador import Player
 
 def main():
@@ -107,7 +79,7 @@ def main():
         if jugador_principal.rect.x <= 120:
             diff = 120 - jugador_principal.rect.x
             jugador_principal.rect.x = 120
-            nivel_actual.avance_nivel(diff)
+            #nivel_actual.avance_nivel(diff)
 
 
         #Si el jugador se mueve hacia el fin del nivel cambia el jugador al siguiente nivel.
@@ -120,6 +92,8 @@ def main():
                 jugador_principal.nivel = nivel_actual
 
 
+        print "current pos: ",  current_position
+                
         # TODO EL CODIGO PARA DIBUJAR DEBE IR DEBAJO DE ESTE COMENTARIO.
         nivel_actual.draw(pantalla)
         lista_sprites_activos.draw(pantalla)
