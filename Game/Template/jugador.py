@@ -160,7 +160,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += 2
         platform_hit_list = pygame.sprite.spritecollide(self, self.nivel.lista_plataformas, False)
         self.rect.y -= 2
-        sonidosalto = pygame.mixer.Sound("")
+        sonidosalto = pygame.mixer.Sound("sonido/Sonidosalto.ogg")
         sonidosalto.play()
 
         if len(platform_hit_list) > 0 or self.rect.bottom >= constantes.LARGO_PISO:

@@ -3,6 +3,7 @@ import pygame
 import constantes
 from nivel1 import Level_01
 from jugador import Player
+from pygame.mixer import music
 
 def main():
     """ Clase principal en el que se debe ejecutar el juego. """
@@ -52,7 +53,11 @@ def main():
                     jugador_principal.avanzar()
                 if evento.key == pygame.K_UP:
                     jugador_principal.saltar()
-
+                if evento.key == pygame.K_r:
+                    #sonido = pygame.mixer.Sound("sonido/Playa.ogg") intentar que el sonido para cuando presiones r antes de ejecutar main
+                    #sonido.stop()
+                    main()
+                    
             if evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_LEFT and jugador_principal.mover_x < 0:
                     jugador_principal.parar()

@@ -21,10 +21,18 @@ class Level_01(Level):
         self.limite_nivel = -33095
         
         sonido = pygame.mixer.Sound("sonido/Playa.ogg")
-        sonido.play(-1)
+        sonido.play()
+        
 
         # Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
         nivel = [ [platforma.GRASS_LEFT, 500, 500],
+                  [platforma.GRASS_LEFT, 600, 400],
+                  [platforma.GRASS_LEFT, 650, 300],
+                  [platforma.GRASS_LEFT, 1045, 300],
+                  [platforma.GRASS_LEFT, 1600, 300],
+                  [platforma.GRASS_LEFT, 1900, 300],
+                  [platforma.GRASS_LEFT, 2050, 400],
+                  [platforma.GRASS_LEFT, 2300, 500],
                   ]
 
         # Se busca en la lista anterior creada y se le agregan las plataformas al nivel.
@@ -48,7 +56,7 @@ class Level_01(Level):
         # Se agrega una plataforma en movimiento.
         bloque = platforma.PlataformaConMovimiento(platforma.GRASS_LEFT)
         bloque.rect.x = 1350
-        bloque.rect.y = 280
+        bloque.rect.y = 300
         bloque.limite_izquierdo = 1350
         bloque.limite_derecho = 1600
         bloque.mover_x = 1
