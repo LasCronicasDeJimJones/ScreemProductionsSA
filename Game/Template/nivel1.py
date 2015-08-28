@@ -25,15 +25,15 @@ class Level_01(Level):
         
 
         # Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
-        nivel = [ [platforma.GRASS_LEFT, 500, 500],
-                  [platforma.GRASS_LEFT, 600, 400],
-                  [platforma.GRASS_LEFT, 650, 300],
-                  [platforma.GRASS_LEFT, 1045, 300],
-                  [platforma.GRASS_LEFT, 1600, 300],
-                  [platforma.GRASS_LEFT, 1900, 300],
-                  [platforma.GRASS_LEFT, 2050, 400],
-                  [platforma.GRASS_LEFT, 2300, 500],
-                  ]
+        nivel = [ [platforma.PLATAFORMA1, 500, 500],
+                  [platforma.PLATAFORMA2, 600, 400],
+                  [platforma.PLATAFORMA3, 650, 300],
+                  [platforma.PLATAFORMA4, 1045, 300],
+                  [platforma.PLATAFORMA5, 1600, 300],
+                  [platforma.PLATAFORMA6, 1900, 300],
+                  
+                  
+                 ]
 
         # Se busca en la lista anterior creada y se le agregan las plataformas al nivel.
         for plataforma in nivel:
@@ -42,8 +42,8 @@ class Level_01(Level):
             bloque.rect.y = plataforma[2]
             bloque.jugador = self.jugador
             self.lista_plataformas.add(bloque)
-
-        puntos = platforma.PlataformaConMovimiento(platforma.GRASS_LEFT )
+        """
+        puntos = platforma.PlataformaConMovimiento(platforma.PLATAFORMA2 )
         puntos.rect.x = 350
         puntos.rect.y = 280
         puntos.limite_izquierdo = 350
@@ -52,9 +52,10 @@ class Level_01(Level):
         puntos.jugador = self.jugador
         puntos.nivel = self
         self.lista_de_cosas_con_puntitos.add(puntos)
+        """
 
         # Se agrega una plataforma en movimiento.
-        bloque = platforma.PlataformaConMovimiento(platforma.GRASS_LEFT)
+        bloque = platforma.PlataformaConMovimiento(platforma.PLATAFORMA3)
         bloque.rect.x = 1350
         bloque.rect.y = 300
         bloque.limite_izquierdo = 1350
