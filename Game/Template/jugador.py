@@ -32,8 +32,7 @@ class Player(pygame.sprite.Sprite):
 
         pygame.sprite.Sprite.__init__(self)
 
-        sprite_sheet = SpriteSheet(ruta)
-        
+        sprite_sheet = SpriteSheet(ruta) 
        
         # Carga de todos los sprite de la imagen hacia la derecha.
         imagen = sprite_sheet.obtener_imagen(363,220 ,48 , 149)

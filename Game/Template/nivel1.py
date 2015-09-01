@@ -23,7 +23,6 @@ class Level_01(Level):
         sonido = pygame.mixer.Sound("sonido/Playa.ogg")
         sonido.play()
         
-        
 
         # Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
         nivel = [ [platforma.PLATAFORMA1, 500, 500],

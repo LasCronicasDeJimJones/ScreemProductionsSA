@@ -28,4 +28,3 @@ class SpriteSheet(object):
         imagen.set_colorkey(constantes.BLANCO)
 
         return imagen
-

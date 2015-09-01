@@ -35,7 +35,6 @@ class Level():
     def draw(self, pantalla):
         """ Dibujamos todo sobre el nivel. """
 
-
         # Se debe dibujar el fondo.
         pantalla.fill(constantes.BLANCO)
         pantalla.blit(self.fondo,(self.posicion_jugador_nivel // 3,0))
