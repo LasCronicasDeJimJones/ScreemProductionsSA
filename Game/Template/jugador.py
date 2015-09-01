@@ -34,6 +34,7 @@ class Player(pygame.sprite.Sprite):
 
         sprite_sheet = SpriteSheet(ruta)
         
+       
         # Carga de todos los sprite de la imagen hacia la derecha.
         imagen = sprite_sheet.obtener_imagen(363,220 ,48 , 149)
         self.jugador_frame_der.append(imagen)

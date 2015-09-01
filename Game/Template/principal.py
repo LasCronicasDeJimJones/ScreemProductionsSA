@@ -107,6 +107,7 @@ def main():
         pantalla.blit( textopuntos,(10,10))
         # TODO EL CODIGO PARA DIBUJAR DEBE IR POR ARRIBA DE ESTE COMENTARIO.
 
+
         clock.tick(60)
 
         pygame.display.flip()

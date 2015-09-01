@@ -31,6 +31,7 @@ class Plataforma(pygame.sprite.Sprite):
                                             sprite_sheet_data[2],
                                             sprite_sheet_data[3])
 
+
         self.rect = self.image.get_rect()
         """
         plataforma_imagen  = pygame.image.load("imagenes/platform.png").convert()        
