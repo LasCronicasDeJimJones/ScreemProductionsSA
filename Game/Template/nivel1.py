@@ -31,7 +31,6 @@ class Level_01(Level):
                   [platforma.PLATAFORMA4, 1045, 300],
                   [platforma.PLATAFORMA5, 1600, 300],
                   [platforma.PLATAFORMA6, 1900, 300],
-                  [platforma.PLATAFORMA6, 2050, 400],
                   [platforma.PLATAFORMA6, 2300, 500],
                   [platforma.PLATAFORMA6, 2550, 400],
                   [platforma.PLATAFORMA6, 2700, 300],
