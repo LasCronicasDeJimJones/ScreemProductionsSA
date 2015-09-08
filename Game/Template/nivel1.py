@@ -1,8 +1,11 @@
 import pygame
 import constantes
 import platforma
+import provisiones
 from nivel import Level
-#from Template.puntos import Puntos_kawaiis
+
+
+#from Template.puntos import puntos
 
 class Level_01(Level):
     ''' Clase que define el primer nivel.
@@ -22,15 +25,20 @@ class Level_01(Level):
         self.limite_nivel = -33095
         
         sonido = pygame.mixer.Sound("sonido/Playa.ogg")
-        sonido.play()
+        sonido.play(-1)
         #nivel_puntos = 
 
+        
+         
+        objetos_puntos = [[provisiones.botella, 500, 100] ]
+                 
+                 
         # Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
-        nivel = [ [platforma.PLATAFORMA1, 500, 500],
-                  [platforma.PLATAFORMA2, 600, 400],
-                  [platforma.PLATAFORMA3, 650, 300],
-                  [platforma.PLATAFORMA4, 1045, 300],
-                  [platforma.PLATAFORMA5, 1600, 300],
+        nivel = [ [platforma.PLATAFORMA6, 500, 500],
+                  [platforma.PLATAFORMA6, 600, 400],
+                  [platforma.PLATAFORMA6, 650, 300],
+                  [platforma.PLATAFORMA6, 1045, 300],
+                  [platforma.PLATAFORMA6, 1600, 300],
                   [platforma.PLATAFORMA6, 1900, 300],
                   [platforma.PLATAFORMA6, 2300, 500],
                   [platforma.PLATAFORMA6, 2550, 400],
@@ -113,9 +121,7 @@ class Level_01(Level):
                   [platforma.PLATAFORMA6, 31900, 200],
                   [platforma.PLATAFORMA6, 32200, 200],
                   [platforma.PLATAFORMA6, 32500, 300],
-                  [platforma.PLATAFORMA6, 32800, 400],
-                  
-                  
+                  [platforma.PLATAFORMA6, 32800, 400],      
                 ]
 
         # Se busca en la lista anterior creada y se le agregan las plataformas al nivel.
@@ -125,17 +131,12 @@ class Level_01(Level):
             bloque.rect.y = plataforma[2]
             bloque.jugador = self.jugador
             self.lista_plataformas.add(bloque)
-        
-        #puntos = Puntos_kawaiis (pygame.sprite.Sprite)
-        #puntos.rect.x = 350
-        #puntos.rect.y = 280
-        #puntos.limite_izquierdo = 350
-        #puntos.limite_derecho = 1000
-        #puntos.mover_x = 1
-        #puntos.jugador = self.jugador
-        #puntos.nivel = self
-        #self.lista_de_cosas_con_puntitos.add(puntos)
-        
+            
+        for objeto_punto in objetos_puntos:            
+            punto = provisiones.Provision(objeto_punto[0])
+            punto.rect.x = objeto_punto[1]
+            punto.rect.y = objeto_punto[2]
+            self.lista_de_cosas_con_puntitos.add(punto)     
 
         # Se agrega una plataforma en movimiento.
         bloque = platforma.PlataformaConMovimiento(platforma.PLATAFORMA3)

@@ -39,12 +39,12 @@ class Player(pygame.sprite.Sprite):
         self.jugador_frame_der.append(imagen)
         imagen = sprite_sheet.obtener_imagen(248, 214 , 68, 156)
         self.jugador_frame_der.append(imagen)
-        #imagen = sprite_sheet.obtener_imagen(130, 216, 98, 157)
-        #self.jugador_frame_der.append(imagen)
-        #imagen = sprite_sheet.obtener_imagen(549, 50, 78, 155)
-        #self.jugador_frame_der.append(imagen)
-        #imagen = sprite_sheet.obtener_imagen(445, 45, 77, 155)
-        #self.jugador_frame_der.append(imagen)
+        imagen = sprite_sheet.obtener_imagen(130, 216, 98, 157)
+        self.jugador_frame_der.append(imagen)
+        imagen = sprite_sheet.obtener_imagen(549, 50, 78, 155)
+        self.jugador_frame_der.append(imagen)
+        imagen = sprite_sheet.obtener_imagen(445, 45, 77, 155)
+        self.jugador_frame_der.append(imagen)
         imagen = sprite_sheet.obtener_imagen(348, 44, 48, 155)
         self.jugador_frame_der.append(imagen)
         imagen = sprite_sheet.obtener_imagen(244, 50, 70, 141)
@@ -54,39 +54,9 @@ class Player(pygame.sprite.Sprite):
         imagen = sprite_sheet.obtener_imagen(549, 221, 86, 149)
         self.jugador_frame_der.append(imagen)
         
+               
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        # # Carga de todos los sprite de la imagen hacia la derecha y la rotamos.
-        
-        
-        
-        
-        
-       
-        
-        
-        
-        
-        
+        # # Carga de todos los sprite de la imagen hacia la derecha y la rotamos.        
         imagen = sprite_sheet.obtener_imagen(549, 221, 86, 149)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
@@ -146,6 +116,14 @@ class Player(pygame.sprite.Sprite):
                 self.rect.right = block.rect.left
             elif self.mover_x < 0:
                 self.rect.left = block.rect.right
+                
+        # Verficamos si colisionamos con algo mientras avanzamos
+        lista_de_colision_puntos = pygame.sprite.spritecollide(self, self.nivel.lista_de_cosas_con_puntitos, False)
+        for objeto_punto in lista_de_colision_puntos:
+            #sumar puntos al jugador
+            print "!!!SUMAR PUNTOS"
+            self.puntos = self.puntos + 10 
+                
 
         self.rect.y += self.mover_y
 

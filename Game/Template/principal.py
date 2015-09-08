@@ -97,7 +97,7 @@ def main():
                 jugador_principal.nivel = nivel_actual
 
 
-        print "current pos: ",  current_position
+        #print "current pos: ",  current_position
                 
         # TODO EL CODIGO PARA DIBUJAR DEBE IR DEBAJO DE ESTE COMENTARIO.
         nivel_actual.draw(pantalla)
