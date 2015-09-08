@@ -103,7 +103,7 @@ def main():
         nivel_actual.draw(pantalla)
         lista_sprites_activos.draw(pantalla)
 
-        textopuntos=letraparapuntos.render("Puntos: "+str(jugador_principal.puntos),1, constantes.BLANCO)
+        textopuntos=letraparapuntos.render("Puntos: "+str(jugador_principal.puntos),0, constantes.BLANCO)
         pantalla.blit( textopuntos,(10,10))
         # TODO EL CODIGO PARA DIBUJAR DEBE IR POR ARRIBA DE ESTE COMENTARIO.
 

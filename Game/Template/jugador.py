@@ -122,7 +122,8 @@ class Player(pygame.sprite.Sprite):
         for objeto_punto in lista_de_colision_puntos:
             #sumar puntos al jugador
             print "!!!SUMAR PUNTOS"
-            self.puntos = self.puntos + 10 
+            self.puntos = self.puntos + 10
+            objeto_punto.kill() 
                 
 
         self.rect.y += self.mover_y
@@ -141,10 +142,10 @@ class Player(pygame.sprite.Sprite):
             if isinstance(block, PlataformaConMovimiento):
                 self.rect.x += block.mover_x
                 
-        Lista_de_cosas_a_obtener = pygame.sprite.spritecollide(self, self.nivel.lista_de_cosas_con_puntitos, False)
-        for un_objeto in Lista_de_cosas_a_obtener:
-            un_objeto.kill()
-            self.puntos += 1
+        
+        
+        
+            
 
     def calc_grav(self):
         """ Calcula el efecto de la gravedad. """

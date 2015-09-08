@@ -36,6 +36,7 @@ class Provision (pygame.sprite.Sprite):
     def __init__(self, sprite_sheet_data):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("imagenes/botellasprite.jpg.png").convert()
+        self.image = pygame.transform.scale(self.image, (40, 80))
         self.rect = self.image.get_rect()   
         
         self.image.set_colorkey(constantes.BLANCO)
