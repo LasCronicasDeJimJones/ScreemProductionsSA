@@ -2,6 +2,7 @@ import pygame
 import constantes
 import platforma
 from nivel import Level
+#from Template.puntos import Puntos_kawaiis
 
 class Level_01(Level):
     ''' Clase que define el primer nivel.
@@ -22,7 +23,7 @@ class Level_01(Level):
         
         sonido = pygame.mixer.Sound("sonido/Playa.ogg")
         sonido.play()
-        
+        #nivel_puntos = 
 
         # Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
         nivel = [ [platforma.PLATAFORMA1, 500, 500],
@@ -124,17 +125,17 @@ class Level_01(Level):
             bloque.rect.y = plataforma[2]
             bloque.jugador = self.jugador
             self.lista_plataformas.add(bloque)
-        """
-        puntos = platforma.PlataformaConMovimiento(platforma.PLATAFORMA2 )
-        puntos.rect.x = 350
-        puntos.rect.y = 280
-        puntos.limite_izquierdo = 350
-        puntos.limite_derecho = 1000
-        puntos.mover_x = 1
-        puntos.jugador = self.jugador
-        puntos.nivel = self
-        self.lista_de_cosas_con_puntitos.add(puntos)
-        """
+        
+        #puntos = Puntos_kawaiis (pygame.sprite.Sprite)
+        #puntos.rect.x = 350
+        #puntos.rect.y = 280
+        #puntos.limite_izquierdo = 350
+        #puntos.limite_derecho = 1000
+        #puntos.mover_x = 1
+        #puntos.jugador = self.jugador
+        #puntos.nivel = self
+        #self.lista_de_cosas_con_puntitos.add(puntos)
+        
 
         # Se agrega una plataforma en movimiento.
         bloque = platforma.PlataformaConMovimiento(platforma.PLATAFORMA3)
