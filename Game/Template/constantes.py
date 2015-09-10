@@ -10,6 +10,7 @@ NEGRO    = (   5,   5,   5)
 BLANCO    = ( 255, 255, 255) 
 AZUL     = (   0,   0, 255)
 GRIS  =( 137, 137, 137)
+BLANCO2 = (254,254, 254)
 
 # Dimensiones de la pantalla
 ANCHO_PANTALLA  = 800

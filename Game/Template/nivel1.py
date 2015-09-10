@@ -30,7 +30,10 @@ class Level_01(Level):
 
         
          
-        objetos_puntos = [[provisiones.botella, 500, 100] ]
+        objetos_puntos = [[provisiones.botiquin, 500, 100],
+                          [provisiones.banana, 500, 300],
+                          [provisiones.botella, 500, 200] 
+                        ]
                  
                  
         # Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
