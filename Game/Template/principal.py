@@ -1,22 +1,19 @@
 import pygame
-
 import constantes
+import menu
+
 from nivel1 import Level_01
 from jugador import Player
 from pygame.mixer import music
+from jugador import Player
+from menu import cMenu, EVENT_CHANGE_STATE
+from string import center
+from funciones_spritesheet import SpriteSheet
+from funciones_spritesheet import SpriteSheetNotas
 
-def main():
-    """ Clase principal en el que se debe ejecutar el juego. """
-    pygame.init()
-
-    # Configuramos el alto y largo de la pantalla
-    tamanio = [constantes.ANCHO_PANTALLA, constantes.LARGO_PANTALLA]
-    pantalla = pygame.display.set_mode(tamanio)
-
-    pygame.display.set_caption("The Chornicles of Jim Jones")
-
+def jugar(pantalla, jugador):
     # Creamos al jugador con la imagen p1_walk.png
-    jugador_principal = Player("imagenes/spritesdimensiones.png")
+    jugador_principal = Player(jugador)
 
     letraparapuntos=pygame.font.SysFont("comicsans",24)
 
@@ -32,7 +29,7 @@ def main():
     jugador_principal.nivel = nivel_actual
 
     jugador_principal.rect.x = 340
-    jugador_principal.rect.y = constantes.LARGO_PANTALLA - jugador_principal.rect.height
+    jugador_principal.rect.y = constantes.LARGO_PISO - jugador_principal.rect.height
     lista_sprites_activos.add(jugador_principal)
 
     #Variable booleano que nos avisa cuando el usuario aprieta el botOn salir.
@@ -111,7 +108,101 @@ def main():
 
         pygame.display.flip()
 
-    pygame.quit()
+    return salir
+    
+def main():
+    """ Clase principal en el que se debe ejecutar el juego. """
+    pygame.init()
 
+    # Configuramos el alto y largo de la pantalla
+    tamanio = [constantes.ANCHO_PANTALLA, constantes.LARGO_PANTALLA]
+    pantalla = pygame.display.set_mode(tamanio)
+
+    pygame.display.set_caption("The Chornicles of Jim Jones")
+    
+    sprite_sheet = SpriteSheetNotas("imagenes/spritesdimensiones.png")
+    jugador1 = sprite_sheet.get_image(363,220,48,149)
+    sprite_sheet = SpriteSheetNotas("imagenes/spritesdimensiones.png")
+    jugador2 = sprite_sheet.get_image(363,220,48,149)
+    historia = pygame.image.load("imagenes/spritesdimensiones.png").convert()
+    creditos = pygame.image.load("imagenes/spritesdimensiones.png").convert()
+    logo = pygame.image.load("imagenes/logo.png").convert()
+    logo.set_colorkey(constantes.BLANCO)
+    alogo = True
+    if alogo == True:
+        pantalla.blit(logo,(20,20))
+        pygame.display.flip()
+        alogo = False
+    
+    menuJuego = cMenu(50,50,20,5,"vertical",100,pantalla,[("Jugar",1,None),("Historia",2,None),("Creditos",3,None),("Salir",4,None)])
+    menuJugador = cMenu(30, 350, 100, 5, "horizontal", 4, pantalla, [("Metalero",5,jugador1),("Rastafari",6,jugador2),("Volver",0,None)])
+    historia = cMenu (220,150, 400, 400, 'vertical',5,pantalla,[("Historia",7,historia)])
+    creditos = cMenu (100,125, 630, 348, 'vertical',6,pantalla,[("Creditos",8,creditos)])
+    
+    #Alineamos el menu
+       
+    
+    #"""menuPrueba = cMenu(x, y, h_pad, v_pad, orientation, number, background, buttonList)"""
+    menuJuego.set_center(True, True)
+    menuJuego.set_alignment("center", "center")
+    
+    estado = 0
+    estado_previo = 1 
+    
+    opcion =  [] 
+    jugador = 1
+    salir = False
+    
+    
+    while not salir:
+        if estado_previo != estado:
+            pygame.event.post(pygame.event.Event(menu.EVENT_CHANGE_STATE, key = 0))
+            estado_previo = estado
+        e = pygame.event.wait()
+        
+        if e.type == pygame.KEYDOWN or e.type == menu.EVENT_CHANGE_STATE:
+            if estado == 0:
+                opcion, estado = menuJuego.update(e,estado) 
+            elif estado == 1:
+                pantalla.fill(constantes.NEGRO)
+                opcion, estado = menuJugador.update(e, estado)
+                pantalla.blit(logo,(250,20))
+                pygame.display.flip()
+
+            elif estado == 2:
+                pantalla.fill(constantes.NEGRO)
+                opcion, estado = historia.update(e, estado)
+                pygame.display.flip()
+
+            elif estado == 3:
+                pantalla.fill(constantes.NEGRO)
+                opcion, estado = creditos.update(e, estado)
+                pygame.display.flip()
+
+            elif estado == 5:
+                jugador = "imagenes/spritesdimensiones.png"
+                jugar(pantalla, jugador)
+            elif estado == 6:
+                jugador = "imagenes/spritesdimensiones.png"
+                jugar(pantalla, jugador)
+            elif estado == 7:
+                jugador = 3
+                jugar(pantalla, jugador)
+            elif estado == 8:
+                pantalla.fill(constantes.NEGRO)
+                estado = 0
+                pantalla.blit(logo,(250,20))
+                pygame.display.flip()
+
+            else:
+                salir = True
+            
+        if e.type == pygame.QUIT:
+            salir = True
+            
+        pygame.display.update(opcion)
+
+    pygame.quit()
+    
 if __name__ == "__main__":
     main()
