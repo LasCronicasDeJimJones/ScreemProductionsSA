@@ -25,7 +25,7 @@ from funciones_spritesheet import SpriteSheet
 
 botiquin = (44, 180, 165, 140)
 banana = (232, 160, 280, 230)
-botella = (510, 200,150,80)
+botella = (510, 200,150,140)
  
 """
 class Provision (pygame.sprite.Sprite):
@@ -49,7 +49,7 @@ class Provision (pygame.sprite.Sprite):
         
         pygame.sprite.Sprite.__init__(self)
 
-        sprite_sheet = SpriteSheet("imagenes/Objetoslevel1.png")
+        sprite_sheet = SpriteSheet("imagenes/Objetoslevel2.png")
         # Grab the image for this platform
         self.image = sprite_sheet.obtener_imagen(sprite_sheet_data[0],
                                             sprite_sheet_data[1],
