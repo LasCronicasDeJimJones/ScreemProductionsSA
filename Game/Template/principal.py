@@ -126,15 +126,15 @@ def main():
     jugador2 = sprite_sheet.get_image(363,220,48,149)
     historia = pygame.image.load("imagenes/spritesdimensiones.png").convert()
     creditos = pygame.image.load("imagenes/spritesdimensiones.png").convert()
-    logo = pygame.image.load("imagenes/logo.png").convert()
+    logo = pygame.image.load("imagenes/Logo.png").convert()
     logo.set_colorkey(constantes.BLANCO)
     alogo = True
     if alogo == True:
-        pantalla.blit(logo,(20,20))
+        pantalla.blit(logo,(0,0))
         pygame.display.flip()
         alogo = False
     
-    menuJuego = cMenu(50,50,20,5,"vertical",100,pantalla,[("Jugar",1,None),("Historia",2,None),("Creditos",3,None),("Salir",4,None)])
+    menuJuego = cMenu(350,350,20,5,"vertical",100,pantalla,[("Jugar",1,None),("Historia",2,None),("Creditos",3,None),("Salir",4,None)])
     menuJugador = cMenu(30, 350, 100, 5, "horizontal", 4, pantalla, [("Metalero",5,jugador1),("Rastafari",6,jugador2),("Volver",0,None)])
     historia = cMenu (220,150, 400, 400, 'vertical',5,pantalla,[("Historia",7,historia)])
     creditos = cMenu (100,125, 630, 348, 'vertical',6,pantalla,[("Creditos",8,creditos)])
@@ -143,8 +143,8 @@ def main():
        
     
     #"""menuPrueba = cMenu(x, y, h_pad, v_pad, orientation, number, background, buttonList)"""
-    menuJuego.set_center(True, True)
-    menuJuego.set_alignment("center", "center")
+    #menuJuego.set_center(True, True)
+    #menuJuego.set_alignment("center", "center")
     
     estado = 0
     estado_previo = 1 
@@ -163,10 +163,9 @@ def main():
         if e.type == pygame.KEYDOWN or e.type == menu.EVENT_CHANGE_STATE:
             if estado == 0:
                 opcion, estado = menuJuego.update(e,estado) 
-            elif estado == 1:
-                pantalla.fill(constantes.NEGRO)
+            elif estado == 1:                
+                pantalla.blit(logo,(0,0))
                 opcion, estado = menuJugador.update(e, estado)
-                pantalla.blit(logo,(250,20))
                 pygame.display.flip()
 
             elif estado == 2:
@@ -191,7 +190,7 @@ def main():
             elif estado == 8:
                 pantalla.fill(constantes.NEGRO)
                 estado = 0
-                pantalla.blit(logo,(250,20))
+                pantalla.blit(logo,(0,0))
                 pygame.display.flip()
 
             else:
