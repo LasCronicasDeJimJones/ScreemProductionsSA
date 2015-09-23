@@ -120,10 +120,10 @@ def main():
 
     pygame.display.set_caption("The Chornicles of Jim Jones")
     
-    sprite_sheet = SpriteSheetNotas("imagenes/spritesdimensiones.png")
-    jugador1 = sprite_sheet.get_image(363,220,48,149)
-    sprite_sheet = SpriteSheetNotas("imagenes/spritesdimensiones.png")
-    jugador2 = sprite_sheet.get_image(363,220,48,149)
+    sprite_sheet = SpriteSheetNotas("imagenes/personajes.png")
+    jugador1 = sprite_sheet.get_image(156,0,151,298)
+    sprite_sheet = SpriteSheetNotas("imagenes/personajes.png")
+    jugador2 = sprite_sheet.get_image(0,0,151,298)
     historia = pygame.image.load("imagenes/spritesdimensiones.png").convert()
     creditos = pygame.image.load("imagenes/spritesdimensiones.png").convert()
     logo = pygame.image.load("imagenes/Logo.png").convert()
@@ -135,7 +135,7 @@ def main():
         alogo = False
     
     menuJuego = cMenu(350,350,20,5,"vertical",100,pantalla,[("Jugar",1,None),("Historia",2,None),("Creditos",3,None),("Salir",4,None)])
-    menuJugador = cMenu(30, 350, 100, 5, "horizontal", 4, pantalla, [("Metalero",5,jugador1),("Rastafari",6,jugador2),("Volver",0,None)])
+    menuJugador = cMenu(250, 300, 20, 5, "horizontal", 4, pantalla, [("Metalero",5,jugador1),("Rastafari",6,jugador2),("Volver",0,None)])
     historia = cMenu (220,150, 400, 400, 'vertical',5,pantalla,[("Historia",7,historia)])
     creditos = cMenu (100,125, 630, 348, 'vertical',6,pantalla,[("Creditos",8,creditos)])
     
