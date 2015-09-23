@@ -13,6 +13,8 @@ class Level():
     # Imagen de fondo
     fondo = None
 
+    sonido = None
+    
     # Valor numerico de que tan lejos avanzo nuestro jugador en el nivel
     posicion_jugador_nivel = 0
     limite_nivel = -33095

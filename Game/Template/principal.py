@@ -31,6 +31,9 @@ def jugar(pantalla, jugador):
     jugador_principal.rect.x = 340
     jugador_principal.rect.y = constantes.LARGO_PISO - jugador_principal.rect.height
     lista_sprites_activos.add(jugador_principal)
+    
+    #musica
+    nivel_actual.sonido.play()
 
     #Variable booleano que nos avisa cuando el usuario aprieta el botOn salir.
     salir = False
@@ -94,7 +97,13 @@ def jugar(pantalla, jugador):
                 jugador_principal.nivel = nivel_actual
 
         if jugador_principal.vidas ==0:
-            print "GAME OVER"
+            pantalla.fill(constantes.NEGRO)
+            #pantalla.blit(logo,(0,0))
+            textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
+            pantalla.blit( textopuntos,(100,100))
+            nivel_actual.sonido.stop()
+            pygame.display.flip()
+            pygame.event.wait()
             main()
 
 
