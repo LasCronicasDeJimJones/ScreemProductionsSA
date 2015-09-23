@@ -93,6 +93,10 @@ def jugar(pantalla, jugador):
                 nivel_actual = lista_niveles[numero_del_nivel_actual]
                 jugador_principal.nivel = nivel_actual
 
+        if jugador_principal.vidas ==0:
+            print "GAME OVER"
+            main()
+
 
         #print "current pos: ",  current_position
                 
@@ -102,6 +106,9 @@ def jugar(pantalla, jugador):
 
         textopuntos=letraparapuntos.render("Puntos: "+str(jugador_principal.puntos),0, constantes.BLANCO)
         pantalla.blit( textopuntos,(10,10))
+        
+        textovidas=letraparapuntos.render("Vidas: "+str(jugador_principal.vidas),0, constantes.BLANCO)
+        pantalla.blit( textovidas,(10,35))
         # TODO EL CODIGO PARA DIBUJAR DEBE IR POR ARRIBA DE ESTE COMENTARIO.
 
         clock.tick(60)

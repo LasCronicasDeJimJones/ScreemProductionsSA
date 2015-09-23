@@ -23,6 +23,9 @@ class Player(pygame.sprite.Sprite):
     nivel = None
     
     puntos = 0
+    
+    vidas = 3
+    
     # -- Metodos
     def __init__(self,ruta):
         """ __Funcion constructor__ 
@@ -121,10 +124,15 @@ class Player(pygame.sprite.Sprite):
         lista_de_colision_puntos = pygame.sprite.spritecollide(self, self.nivel.lista_de_cosas_con_puntitos, False)
         for objeto_punto in lista_de_colision_puntos:
             #sumar puntos al jugador
-            print "!!!SUMAR PUNTOS"
             self.puntos = self.puntos + 10
             objeto_punto.kill() 
-                
+
+        #verificamos si chocamos con enemigos        
+        lista_de_colision_enemigo = pygame.sprite.spritecollide(self, self.nivel.lista_enemigos, False)
+        for objeto_enemigo in lista_de_colision_enemigo:
+            self.vidas = self.vidas - 1
+            self.rect.x = 340
+            self.rect.y = constantes.LARGO_PISO - self.rect.height        
 
         self.rect.y += self.mover_y
 

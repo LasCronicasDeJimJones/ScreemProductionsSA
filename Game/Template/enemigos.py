@@ -2,23 +2,24 @@ import pygame
 from funciones_spritesheet import *
 import jugador
 from jugador import Player
-pinchos            = (0, 0, 264, 89)
+
+PINCHO           = (21,532, 652, 58)
 
 
-class Enemigo(pygame.sprite.Sprite):
-   
-    avance_jugador = 132
+class Pincho(pygame.sprite.Sprite):
 
     def __init__(self, sprite_sheet_data):
 
         pygame.sprite.Sprite.__init__(self)
-        #sprite_sheet = SpriteSheet("imagenes/pinchos.png")
-       
-        #self.image = pygame.image.load("imagenes/pinchoshd.png").convert()
-        #self.rect = self.image.get_rect()    
-
-
-        #self.image.set_colorkey(constantes.BLANCO)
+        
+        sprite_sheet = SpriteSheet("imagenes/pinchito.png")
+        
+        self.image = sprite_sheet.obtener_imagen(sprite_sheet_data[0],sprite_sheet_data[1],sprite_sheet_data[2],sprite_sheet_data[3])
+        self.image = pygame.transform.scale(self.image, (217, 19))
+        #self.image.set_colorkey(constantes.NEGRO)
+        
+        self.rect = self.image.get_rect()    
+        
         
         
                    

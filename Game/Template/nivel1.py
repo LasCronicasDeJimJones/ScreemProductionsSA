@@ -3,6 +3,7 @@ import constantes
 import platforma
 import provisiones
 from nivel import Level
+from enemigos import PINCHO,Pincho
 
 
 #from Template.puntos import puntos
@@ -156,6 +157,9 @@ class Level_01(Level):
                   [platforma.PLATAFORMA6, 32500, 300],
                   [platforma.PLATAFORMA6, 32800, 400],      
                 ]
+        #Enemigos
+        enemigos = [[PINCHO,400,550]
+                    ]
 
         # Se busca en la lista anterior creada y se le agregan las plataformas al nivel.
         for plataforma in nivel:
@@ -169,7 +173,14 @@ class Level_01(Level):
             punto = provisiones.Provision(objeto_punto[0])
             punto.rect.x = objeto_punto[1]
             punto.rect.y = objeto_punto[2]
-            self.lista_de_cosas_con_puntitos.add(punto)     
+            self.lista_de_cosas_con_puntitos.add(punto)    
+            
+        for enemigo in enemigos:            
+            un_enemigo = Pincho(enemigo[0])
+            un_enemigo.rect.x = enemigo[1]
+            un_enemigo.rect.y = enemigo[2]
+            self.lista_enemigos.add(un_enemigo)    
+         
 
         # Se agrega una plataforma en movimiento.
         bloque = platforma.PlataformaConMovimiento(platforma.PLATAFORMA3)
