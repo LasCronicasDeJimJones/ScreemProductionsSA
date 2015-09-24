@@ -3,7 +3,7 @@ import constantes
 import platforma
 import provisiones
 from nivel import Level
-from enemigos import PINCHO,Pincho
+from enemigos import Pincho,PINCHO,PINCHO2,PINCHO3,PINCHO4
 
 
 #from Template.puntos import puntos
@@ -158,7 +158,9 @@ class Level_01(Level):
                   [platforma.PLATAFORMA6, 32800, 400],      
                 ]
         #Enemigos
-        enemigos = [[PINCHO,400,550]
+        enemigos = [[PINCHO,830,545],
+                    [PINCHO,1250,545],
+                    [PINCHO,1400,545],
                     ]
 
         # Se busca en la lista anterior creada y se le agregan las plataformas al nivel.

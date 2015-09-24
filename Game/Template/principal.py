@@ -53,10 +53,6 @@ def jugar(pantalla, jugador):
                     jugador_principal.avanzar()
                 if evento.key == pygame.K_UP:
                     jugador_principal.saltar()
-                if evento.key == pygame.K_r:
-                    #sonido = pygame.mixer.Sound("sonido/Playa.ogg") intentar que el sonido para cuando presiones r antes de ejecutar main
-                    #sonido.stop()
-                    main()
                     
             if evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_LEFT and jugador_principal.mover_x < 0:
