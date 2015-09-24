@@ -33,7 +33,7 @@ def jugar(pantalla, jugador):
     lista_sprites_activos.add(jugador_principal)
     
     #musica
-    nivel_actual.sonido.play()
+    nivel_actual.sonido.play(-1)
 
     #Variable booleano que nos avisa cuando el usuario aprieta el botOn salir.
     salir = False
@@ -80,7 +80,7 @@ def jugar(pantalla, jugador):
         if jugador_principal.rect.x <= 120:
             diff = 120 - jugador_principal.rect.x
             jugador_principal.rect.x = 120
-            #nivel_actual.avance_nivel(diff)
+            nivel_actual.avance_nivel(diff)
 
 
         #Si el jugador se mueve hacia el fin del nivel cambia el jugador al siguiente nivel.
@@ -92,7 +92,7 @@ def jugar(pantalla, jugador):
                 nivel_actual = lista_niveles[numero_del_nivel_actual]
                 jugador_principal.nivel = nivel_actual
 
-        if jugador_principal.vidas ==0:
+        if jugador_principal.vidas <= 0:
             pantalla.fill(constantes.NEGRO)
             #pantalla.blit(logo,(0,0))
             textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
@@ -103,7 +103,7 @@ def jugar(pantalla, jugador):
             main()
 
 
-        #print "current pos: ",  current_position
+        print "current pos: ",  current_position
                 
         # TODO EL CODIGO PARA DIBUJAR DEBE IR DEBAJO DE ESTE COMENTARIO.
         nivel_actual.draw(pantalla)

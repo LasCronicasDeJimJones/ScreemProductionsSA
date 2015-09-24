@@ -38,57 +38,67 @@ class Player(pygame.sprite.Sprite):
         sprite_sheet = SpriteSheet(ruta) 
        
         # Carga de todos los sprite de la imagen hacia la derecha.
-        imagen = sprite_sheet.obtener_imagen(363,220 ,48 , 149)
+        imagen = sprite_sheet.obtener_imagen(600,180 ,120 , 180)
         self.jugador_frame_der.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(248, 214 , 68, 156)
+        imagen = sprite_sheet.obtener_imagen(480, 180 , 120, 180)
         self.jugador_frame_der.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(130, 216, 98, 157)
+        imagen = sprite_sheet.obtener_imagen(360, 180, 120, 180)
         self.jugador_frame_der.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(549, 50, 78, 155)
+        imagen = sprite_sheet.obtener_imagen(240, 180, 120, 180)
         self.jugador_frame_der.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(445, 45, 77, 155)
+        imagen = sprite_sheet.obtener_imagen(120, 180, 120, 180)
         self.jugador_frame_der.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(348, 44, 48, 155)
+        imagen = sprite_sheet.obtener_imagen(0, 180, 120, 180)
         self.jugador_frame_der.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(244, 50, 70, 141)
+        imagen = sprite_sheet.obtener_imagen(600, 0, 120, 180)
         self.jugador_frame_der.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(31, 50, 86, 149)
+        imagen = sprite_sheet.obtener_imagen(480, 0, 120, 180)
         self.jugador_frame_der.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(549, 221, 86, 149)
+        imagen = sprite_sheet.obtener_imagen(360, 0, 120, 180)
         self.jugador_frame_der.append(imagen)
-        
-               
-        
+        imagen = sprite_sheet.obtener_imagen(240, 0, 120, 180)
+        self.jugador_frame_der.append(imagen)
+        imagen = sprite_sheet.obtener_imagen(120, 0, 120, 180)
+        self.jugador_frame_der.append(imagen)      
+        imagen = sprite_sheet.obtener_imagen(0, 0, 120, 180)
+        self.jugador_frame_der.append(imagen)
         # # Carga de todos los sprite de la imagen hacia la derecha y la rotamos.        
-        imagen = sprite_sheet.obtener_imagen(549, 221, 86, 149)
+        imagen = sprite_sheet.obtener_imagen(600, 180, 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(460,220, 75, 149)
+        imagen = sprite_sheet.obtener_imagen(480,180, 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(363,220 ,48 , 149)
+        imagen = sprite_sheet.obtener_imagen(360,180 ,120 , 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(248, 214 , 68, 156)
+        imagen = sprite_sheet.obtener_imagen(240, 180 , 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(130, 216, 98, 157)
+        imagen = sprite_sheet.obtener_imagen(120, 180, 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(549, 50, 78, 155)
+        imagen = sprite_sheet.obtener_imagen(0, 180, 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(445, 45, 77, 155)
+        imagen = sprite_sheet.obtener_imagen(600, 0, 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(348, 44, 48, 155)
+        imagen = sprite_sheet.obtener_imagen(480, 0, 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(244, 50, 70, 141)
+        imagen = sprite_sheet.obtener_imagen(360, 0, 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
         self.jugador_frame_izq.append(imagen)
-        imagen = sprite_sheet.obtener_imagen(31, 50, 86, 149)
+        imagen = sprite_sheet.obtener_imagen(240, 0, 120, 180)
         imagen = pygame.transform.flip(imagen, True, False)
+        self.jugador_frame_izq.append(imagen)
+        imagen = sprite_sheet.obtener_imagen(120, 0, 120, 180)
+        imagen = pygame.transform.flip(imagen, True, False)     
+        self.jugador_frame_izq.append(imagen)
+        imagen = sprite_sheet.obtener_imagen(0, 0, 120, 180)
+        imagen = pygame.transform.flip(imagen, True, False)
+        self.jugador_frame_izq.append(imagen)
         # Seteamos con que sprite comenzar
         self.image = self.jugador_frame_der[0]
 
@@ -130,9 +140,17 @@ class Player(pygame.sprite.Sprite):
         #verificamos si chocamos con enemigos        
         lista_de_colision_enemigo = pygame.sprite.spritecollide(self, self.nivel.lista_enemigos, False)
         for objeto_enemigo in lista_de_colision_enemigo:
-            self.vidas = self.vidas - 1
-            self.rect.x = 340
-            self.rect.y = constantes.LARGO_PISO - self.rect.height        
+            print "CHOQUE : ",self.nivel.posicion_jugador_nivel
+            
+            
+            self.rect.x = pos 
+            
+        
+            #self.rect.x = pos
+            #self.rect.y = constantes.LARGO_PISO - self.rect.height
+            
+            #self.rect.x = pos
+            self.vidas -= 1
 
         self.rect.y += self.mover_y
 
@@ -149,6 +167,7 @@ class Player(pygame.sprite.Sprite):
 
             if isinstance(block, PlataformaConMovimiento):
                 self.rect.x += block.mover_x
+            
                 
         
         

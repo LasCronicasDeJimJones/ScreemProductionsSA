@@ -68,8 +68,7 @@ class Level_01(Level):
                  
                  
         # Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
-        nivel = [ [platforma.PLATAFORMA6, 500, 500],
-                  [platforma.PLATAFORMA6, 600, 400],
+        nivel =   [[platforma.PLATAFORMA6, 600, 400],
                   [platforma.PLATAFORMA6, 650, 300],
                   [platforma.PLATAFORMA6, 1045, 300],
                   [platforma.PLATAFORMA6, 1600, 300],
@@ -158,9 +157,9 @@ class Level_01(Level):
                   [platforma.PLATAFORMA6, 32800, 400],      
                 ]
         #Enemigos
-        enemigos = [[PINCHO,830,545],
+        enemigos = [[PINCHO,3000,545],
                     [PINCHO,1250,545],
-                    [PINCHO,1400,545],
+                    [PINCHO,1600,545],
                     ]
 
         # Se busca en la lista anterior creada y se le agregan las plataformas al nivel.

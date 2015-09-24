@@ -18,7 +18,7 @@ class Level():
     # Valor numerico de que tan lejos avanzo nuestro jugador en el nivel
     posicion_jugador_nivel = 0
     limite_nivel = -33095
-    limite_izquierdo = 0
+    #limite_izquierdo = 0
 
     def __init__(self, jugador):
         """ Constructor. Se le debe pasar al jugador para saber sobre que nivel esta. """
