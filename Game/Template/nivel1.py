@@ -25,7 +25,7 @@ class Level_01(Level):
         self.fondo.set_colorkey(constantes.BLANCO)
         self.limite_nivel = -33095
         
-        self.sonido = pygame.mixer.Sound("sonido/Playa.ogg")
+        self.sonido = pygame.mixer.Sound("sonido/Playafinal.ogg")
         #sonido.play(-1)
         #nivel_puntos = 
 

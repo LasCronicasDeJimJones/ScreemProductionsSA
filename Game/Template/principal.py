@@ -40,7 +40,7 @@ def jugar(pantalla, jugador):
     salir = False
 
     clock = pygame.time.Clock()
-
+    
     # -------- Loop Princiapl -----------
     while not salir:
         for evento in pygame.event.get(): 
@@ -54,12 +54,17 @@ def jugar(pantalla, jugador):
                     jugador_principal.avanzar()
                 if evento.key == pygame.K_UP:
                     jugador_principal.saltar()
+                if evento.key == pygame.K_LSHIFT and pygame.K_RIGHT:
+                    jugador_principal.turbo = True
                     
             if evento.type == pygame.KEYUP:
                 if evento.key == pygame.K_LEFT and jugador_principal.mover_x < 0:
                     jugador_principal.parar()
                 if evento.key == pygame.K_RIGHT and jugador_principal.mover_x > 0:
                     jugador_principal.parar()
+                if evento.key == pygame.K_LSHIFT and pygame.K_LEFT:
+                    jugador_principal.turbo = False
+                    
 
 
         # Actualiza todo el jugador
@@ -117,7 +122,7 @@ def jugar(pantalla, jugador):
         pantalla.blit( textovidas,(10,35))
         # TODO EL CODIGO PARA DIBUJAR DEBE IR POR ARRIBA DE ESTE COMENTARIO.
 
-        clock.tick(120)
+        clock.tick(60)
 
         pygame.display.flip()
 

@@ -1,4 +1,4 @@
-import pygame
+import pygame   
 
 import constantes
 
@@ -12,6 +12,9 @@ class Player(pygame.sprite.Sprite):
     mover_x = 0
     mover_y = 0
 
+    # tecla shift
+    turbo = False
+    
     # Estas listas definen todas las imagenes de nuestro jugador.
     jugador_frame_izq = []
     jugador_frame_der = []
@@ -179,14 +182,27 @@ class Player(pygame.sprite.Sprite):
         self.calc_grav()
 
         # Movimientos Izquierda/Derecha
-        self.rect.x += self.mover_x
-        pos = self.rect.x + self.nivel.posicion_jugador_nivel
-        if self.direccion == "R":
-            frame = (pos // 30) % len(self.jugador_frame_der)
-            self.image = self.jugador_frame_der[frame]
+        # no es turbo
+        if self.turbo == False:
+            self.rect.x += self.mover_x
+            pos = self.rect.x + self.nivel.posicion_jugador_nivel
+            if self.direccion == "R":
+                frame = (pos // 30) % len(self.jugador_frame_der)
+                self.image = self.jugador_frame_der[frame]
+            else:
+                frame = (pos // 30) % len(self.jugador_frame_izq)
+                self.image = self.jugador_frame_izq[frame]
+        # turbo
         else:
-            frame = (pos // 30) % len(self.jugador_frame_izq)
-            self.image = self.jugador_frame_izq[frame]
+            self.rect.x += self.mover_x
+            pos = self.rect.x + self.nivel.posicion_jugador_nivel
+            if self.direccion == "R":
+                frame = (pos // 15) % len(self.jugador_frame_der)
+                self.image = self.jugador_frame_der[frame]
+            else:
+                frame = (pos // 15) % len(self.jugador_frame_izq)
+                self.image = self.jugador_frame_izq[frame]
+            
 
         # Verficiamos si colisionamos con algo mientras avanzamos
         lista_de_bloques_colisionados = pygame.sprite.spritecollide(self, self.nivel.lista_plataformas, False)
@@ -209,14 +225,14 @@ class Player(pygame.sprite.Sprite):
             print "CHOQUE : ",self.nivel.posicion_jugador_nivel
             
             
-            "self.rect.x = pos" 
+            self.rect.x = pos 
             
         
             #self.rect.x = pos
             #self.rect.y = constantes.LARGO_PISO - self.rect.height
             
             #self.rect.x = pos
-            #self.vidas -= 1
+            self.vidas -= 1
 
         self.rect.y += self.mover_y
 
@@ -267,14 +283,20 @@ class Player(pygame.sprite.Sprite):
 
     def retroceder(self):
         """ Se llama cuando movemos hacia la izq. """
-        
-        self.mover_x = -6
-        self.direccion = "L"
-
+        # no es turbo
+        if self.turbo == False:
+            self.mover_x = -6
+            self.direccion = "L"
+        else:
+            self.mover_x = -8
+            self.direccion= "L"
     def avanzar(self):
         """ Se llama cuando movemos hacia la der. """
-        
-        self.mover_x = 6
+        # no es turbo
+        if self.turbo == False:
+            self.mover_x = 6
+        else:
+            self.mover_x = 8
         self.direccion = "R"
 
     def parar(self):
