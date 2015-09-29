@@ -1,7 +1,7 @@
 import pygame
 import constantes
 import menu
-
+from nivel2 import Level_02
 from nivel1 import Level_01
 from jugador import Player
 from pygame.mixer import music
@@ -20,6 +20,7 @@ def jugar(pantalla, jugador):
     # Creamos todos los niveles del juego
     lista_niveles = []
     lista_niveles.append(Level_01(jugador_principal))
+    lista_niveles.append(Level_02(jugador_principal))
 
     # Seteamos cual es el primer nivel.
     numero_del_nivel_actual = 0
@@ -116,7 +117,7 @@ def jugar(pantalla, jugador):
         pantalla.blit( textovidas,(10,35))
         # TODO EL CODIGO PARA DIBUJAR DEBE IR POR ARRIBA DE ESTE COMENTARIO.
 
-        clock.tick(60)
+        clock.tick(120)
 
         pygame.display.flip()
 
@@ -191,11 +192,9 @@ def main():
                 pygame.display.flip()
 
             elif estado == 5:
-                jugador = "imagenes/spritesdimensiones.png"
-                jugar(pantalla, jugador)
+                jugar(pantalla, 1)
             elif estado == 6:
-                jugador = "imagenes/spritesdimensiones.png"
-                jugar(pantalla, jugador)
+                jugar(pantalla, 2)
             elif estado == 7:
                 jugador = 3
                 jugar(pantalla, jugador)

@@ -155,7 +155,8 @@ class Level_01(Level):
                   [platforma.PLATAFORMA6, 32200, 200],
                   [platforma.PLATAFORMA6, 32500, 300],
                   [platforma.PLATAFORMA6, 32800, 400],      
-                ]
+                  [platforma.PLATAFORMA6, 27000, 200],
+                  [platforma.PLATAFORMA6, 26500, 300]]
         #Enemigos
         enemigos = [[PINCHO,3000,545],
                     [PINCHO,1250,545],
