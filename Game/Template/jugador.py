@@ -1,7 +1,5 @@
 import pygame   
-
 import constantes
-
 from platforma import PlataformaConMovimiento
 from funciones_spritesheet import SpriteSheet
 

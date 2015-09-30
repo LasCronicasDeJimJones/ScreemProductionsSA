@@ -22,7 +22,6 @@ class Plataforma(pygame.sprite.Sprite):
     def __init__(self, sprite_sheet_data):
         """ Plataforma constructor."""
         pygame.sprite.Sprite.__init__(self)
-
         
         sprite_sheet = SpriteSheet("imagenes/plataforma.png")
         # Grab the image for this platform
