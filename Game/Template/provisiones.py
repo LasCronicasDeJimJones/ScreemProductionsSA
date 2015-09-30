@@ -49,7 +49,7 @@ class Provision (pygame.sprite.Sprite):
         
         pygame.sprite.Sprite.__init__(self)
 
-        sprite_sheet = SpriteSheet("imagenes/Objetoslevel2.png")
+        sprite_sheet = SpriteSheet("imagenes/Objetoslevel.png")
         # Grab the image for this platform
         self.image = sprite_sheet.obtener_imagen(sprite_sheet_data[0],
                                             sprite_sheet_data[1],
