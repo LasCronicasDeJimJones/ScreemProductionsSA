@@ -281,7 +281,7 @@ class Player(pygame.sprite.Sprite):
             sonidosalto = pygame.mixer.Sound("sonido/Sonidosalto.ogg")
             sonidosalto.play()
         else:
-            sonidosalto = pygame.mixer.Sound("sonido/Chapoteodeagua.wav")
+            sonidosalto = pygame.mixer.Sound("sonido/vozmazx.ogg")
             sonidosalto.play()   
              
         if len(platform_hit_list) > 0 or self.rect.bottom >= constantes.LARGO_PISO:

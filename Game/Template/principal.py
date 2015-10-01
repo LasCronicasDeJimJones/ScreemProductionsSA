@@ -144,7 +144,11 @@ def main():
     jugador1 = sprite_sheet.get_image(156,0,141,298)
     sprite_sheet = SpriteSheetNotas("imagenes/personajes.png")
     jugador2 = sprite_sheet.get_image(0,0,151,298)
-    historia = pygame.image.load("imagenes/spritesdimensiones.png").convert()
+    historia = pygame.image.load("imagenes/historiapergamino.png").convert()
+    historia2 = pygame.image.load("imagenes/historiapergaminolvl2pt2.png").convert()
+    historia3 = pygame.image.load("imagenes/historiapergamino.png").convert()
+    historia4 = pygame.image.load("imagenes/historiapergamino.png").convert()
+    historia5 = pygame.image.load("imagenes/historiapergamino.png").convert()
     creditos = pygame.image.load("imagenes/spritesdimensiones.png").convert()
     logo = pygame.image.load("imagenes/Logo.png").convert()
     logo.set_colorkey(constantes.BLANCO)
@@ -156,8 +160,9 @@ def main():
     
     menuJuego = cMenu(350,350,20,5,"vertical",100,pantalla,[("Jugar",1,None),("Historia",2,None),("Creditos",3,None),("Salir",4,None)])
     menuJugador = cMenu(250, 300, 20, 5, "horizontal", 4, pantalla, [("Metalero",5,jugador1),("Rastafari",6,jugador2),("Volver",0,None)])
-    historia = cMenu (220,150, 400, 400, 'vertical',5,pantalla,[("Historia",7,historia)])
-    creditos = cMenu (100,125, 630, 348, 'vertical',6,pantalla,[("Creditos",8,creditos)])
+    historia = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",7,historia)])
+    historia2 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",8,historia2)])
+    creditos = cMenu (100,125, 630, 348, 'vertical',6,pantalla,[("Creditos",12,creditos)])
     
     #Alineamos el menu
        
@@ -203,8 +208,9 @@ def main():
             elif estado == 6:
                 jugar(pantalla, 2)
             elif estado == 7:
-                jugador = 3
-                jugar(pantalla, jugador)
+                pantalla.fill(constantes.NEGRO)
+                opcion, estado = historia2.update(e, estado)
+                pygame.display.flip()
             elif estado == 8:
                 pantalla.fill(constantes.NEGRO)
                 estado = 0
