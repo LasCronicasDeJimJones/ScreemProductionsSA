@@ -102,7 +102,8 @@ class Player(pygame.sprite.Sprite):
             self.jugador_frame_izq.append(imagen)
             
         else:
-            sprite_sheet = SpriteSheet("imagenes/spritesdimensiones.png") 
+
+            sprite_sheet = SpriteSheet("imagenes/Spritesheet2.png") 
            
             # Carga de todos los sprite de la imagen hacia la derecha.
             imagen = sprite_sheet.obtener_imagen(600,180 ,120 , 180)
