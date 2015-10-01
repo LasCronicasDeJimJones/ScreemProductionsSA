@@ -164,7 +164,7 @@ class Level_02(Level):
                         ]
         #Se busca en la lista anterior creada y se le agregan las plataformas al jugador.
         for plataforma in nivel:
-            bloque = platforma.Plataforma(plataforma[0])
+            bloque = platforma2.Plataforma2(plataforma[0])
             bloque.rect.x = plataforma[1]
             bloque.rect.y = plataforma[2]
             bloque.jugador = self.jugador

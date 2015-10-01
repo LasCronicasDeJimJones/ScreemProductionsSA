@@ -94,16 +94,18 @@ def jugar(pantalla, jugador):
         if current_position < nivel_actual.limite_nivel:
             jugador_principal.rect.x = 120
             if numero_del_nivel_actual < len(lista_niveles)-1:
+                pygame.mixer.stop()
                 numero_del_nivel_actual += 1
                 nivel_actual = lista_niveles[numero_del_nivel_actual]
                 jugador_principal.nivel = nivel_actual
+                nivel_actual.sonido.play(-1)
 
         if jugador_principal.vidas <= 0:
+            pygame.mixer.stop()
             pantalla.fill(constantes.NEGRO)
             #pantalla.blit(logo,(0,0))
             textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
             pantalla.blit( textopuntos,(100,100))
-            nivel_actual.sonido.stop()
             pygame.display.flip()
             pygame.event.wait()
             main()
@@ -139,7 +141,7 @@ def main():
     pygame.display.set_caption("The Chornicles of Jim Jones")
     
     sprite_sheet = SpriteSheetNotas("imagenes/personajes.png")
-    jugador1 = sprite_sheet.get_image(156,0,151,298)
+    jugador1 = sprite_sheet.get_image(156,0,141,298)
     sprite_sheet = SpriteSheetNotas("imagenes/personajes.png")
     jugador2 = sprite_sheet.get_image(0,0,151,298)
     historia = pygame.image.load("imagenes/spritesdimensiones.png").convert()

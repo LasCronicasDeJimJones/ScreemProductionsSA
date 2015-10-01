@@ -27,6 +27,7 @@ class Player(pygame.sprite.Sprite):
     
     vidas = 3
     
+    genero=1
     # -- Metodos
     def __init__(self,rol):
         """ __Funcion constructor__ 
@@ -37,7 +38,7 @@ class Player(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         if rol==1:
             sprite_sheet = SpriteSheet("imagenes/spritesdimensiones.png") 
-           
+            self.genero=1
             # Carga de todos los sprite de la imagen hacia la derecha.
             imagen = sprite_sheet.obtener_imagen(600,180 ,120 , 180)
             self.jugador_frame_der.append(imagen)
@@ -104,7 +105,7 @@ class Player(pygame.sprite.Sprite):
         else:
 
             sprite_sheet = SpriteSheet("imagenes/Spritesheet2.png") 
-           
+            self.genero=2
             # Carga de todos los sprite de la imagen hacia la derecha.
             imagen = sprite_sheet.obtener_imagen(600,180 ,120 , 180)
             self.jugador_frame_der.append(imagen)
@@ -182,25 +183,26 @@ class Player(pygame.sprite.Sprite):
 
         # Movimientos Izquierda/Derecha
         # no es turbo
-        if self.turbo == False:
-            self.rect.x += self.mover_x
-            pos = self.rect.x + self.nivel.posicion_jugador_nivel
-            if self.direccion == "R":
-                frame = (pos // 30) % len(self.jugador_frame_der)
-                self.image = self.jugador_frame_der[frame]
+        if self.direccion != "S":
+            if self.turbo == False:
+                self.rect.x += self.mover_x
+                pos = self.rect.x + self.nivel.posicion_jugador_nivel
+                if self.direccion == "R":
+                    frame = (pos // 30) % len(self.jugador_frame_der)
+                    self.image = self.jugador_frame_der[frame]
+                else:
+                    frame = (pos // 30) % len(self.jugador_frame_izq)
+                    self.image = self.jugador_frame_izq[frame]
+            # turbo
             else:
-                frame = (pos // 30) % len(self.jugador_frame_izq)
-                self.image = self.jugador_frame_izq[frame]
-        # turbo
-        else:
-            self.rect.x += self.mover_x
-            pos = self.rect.x + self.nivel.posicion_jugador_nivel
-            if self.direccion == "R":
-                frame = (pos // 15) % len(self.jugador_frame_der)
-                self.image = self.jugador_frame_der[frame]
-            else:
-                frame = (pos // 15) % len(self.jugador_frame_izq)
-                self.image = self.jugador_frame_izq[frame]
+                self.rect.x += self.mover_x
+                pos = self.rect.x + self.nivel.posicion_jugador_nivel
+                if self.direccion == "R":
+                    frame = (pos // 15) % len(self.jugador_frame_der)
+                    self.image = self.jugador_frame_der[frame]
+                else:
+                    frame = (pos // 15) % len(self.jugador_frame_izq)
+                    self.image = self.jugador_frame_izq[frame]
             
 
         # Verficiamos si colisionamos con algo mientras avanzamos
@@ -248,6 +250,7 @@ class Player(pygame.sprite.Sprite):
 
             if isinstance(block, PlataformaConMovimiento):
                 self.rect.x += block.mover_x
+                self.direccion = "S"
             
                 
         
@@ -274,9 +277,13 @@ class Player(pygame.sprite.Sprite):
         self.rect.y += 2
         platform_hit_list = pygame.sprite.spritecollide(self, self.nivel.lista_plataformas, False)
         self.rect.y -= 2
-        sonidosalto = pygame.mixer.Sound("sonido/Sonidosalto.ogg")
-        sonidosalto.play()
-
+        if self.genero==1:
+            sonidosalto = pygame.mixer.Sound("sonido/Sonidosalto.ogg")
+            sonidosalto.play()
+        else:
+            sonidosalto = pygame.mixer.Sound("sonido/Chapoteodeagua.wav")
+            sonidosalto.play()   
+             
         if len(platform_hit_list) > 0 or self.rect.bottom >= constantes.LARGO_PISO:
             self.mover_y = -10
 
