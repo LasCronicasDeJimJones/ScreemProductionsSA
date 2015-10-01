@@ -55,7 +55,7 @@ class Level():
 
         for plataforma in self.lista_plataformas:
             plataforma.rect.x += avance_x
-
+        
         for enemigo in self.lista_enemigos:
             enemigo.rect.x += avance_x
             
