@@ -12,7 +12,7 @@ class Level():
     lista_de_cosas_con_puntitos = None
     # Imagen de fondo
     fondo = None
-
+    bloque_blanco = None
     sonido = None
     
     # Valor numerico de que tan lejos avanzo nuestro jugador en el nivel

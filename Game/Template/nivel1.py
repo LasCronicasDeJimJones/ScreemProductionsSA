@@ -1,6 +1,7 @@
 import pygame
 import constantes
 import platforma
+import platforma3
 import provisiones
 from nivel import Level
 from enemigos import Pincho,PINCHO,PINCHO2,PINCHO3,PINCHO4
@@ -29,7 +30,7 @@ class Level_01(Level):
         #sonido.play(-1)
         #nivel_puntos = 
         
-
+        #Cargamos la imagen de bloque transparente.
         
          
         objetos_puntos = [[provisiones.botiquin, 500, 100],
@@ -149,7 +150,7 @@ class Level_01(Level):
                   [platforma.PLATAFORMA6, 32200, 200],
                   [platforma.PLATAFORMA6, 32500, 300],
                   [platforma.PLATAFORMA6, 32800, 400],      
-                  [platforma.PLATAFORMA6, 27000, 200]]
+                  [platforma.PLATAFORMA6, 27000, 200]]        
         #Enemigos
         enemigos = [[PINCHO,3000,545],
                     [PINCHO,1250,545],
@@ -197,7 +198,7 @@ class Level_01(Level):
             bloque.rect.y = plataforma[2]
             bloque.jugador = self.jugador
             self.lista_plataformas.add(bloque)
-            
+        
         for objeto_punto in objetos_puntos:            
             punto = provisiones.Provision(objeto_punto[0])
             punto.rect.x = objeto_punto[1]

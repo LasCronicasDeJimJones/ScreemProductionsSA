@@ -25,7 +25,7 @@ def jugar(pantalla, jugador):
     lista_niveles.append(Level_02(jugador_principal))
 
     # Seteamos cual es el primer nivel.
-    numero_del_nivel_actual = 0
+    numero_del_nivel_actual = 1
     nivel_actual = lista_niveles[numero_del_nivel_actual]
 
     lista_sprites_activos = pygame.sprite.Group()
@@ -100,10 +100,20 @@ def jugar(pantalla, jugador):
             if numero_del_nivel_actual < len(lista_niveles)-1:
                 pygame.mixer.stop()
                 numero_del_nivel_actual += 1
-                nivel_actual = lista_niveles[numero_del_nivel_actual]
-                jugador_principal.nivel = nivel_actual
-                nivel_actual.sonido.play(-1)
-                starting_point = time.time() + 400
+                if (numero_del_nivel_actual<=1):
+                    nivel_actual = lista_niveles[numero_del_nivel_actual]
+                    jugador_principal.nivel = nivel_actual
+                    nivel_actual.sonido.play(-1)
+                    starting_point = time.time() + 400
+                else:
+                    pantalla.fill(constantes.NEGRO)
+                    game = pygame.image.load("imagenes/Gameover.png").convert()
+                    pantalla.blit(game,(0,0))
+                    #textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
+                    #pantalla.blit( textopuntos,(100,100))
+                    pygame.display.flip()
+                    pygame.event.wait()
+                    main()
 
         if jugador_principal.vidas <= 0:
             pygame.mixer.stop()

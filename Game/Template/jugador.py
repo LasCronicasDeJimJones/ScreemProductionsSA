@@ -230,13 +230,13 @@ class Player(pygame.sprite.Sprite):
             print "CHOQUE : ",self.nivel.posicion_jugador_nivel
             
             
-            self.rect.x = pos 
+            #self.rect.x = pos 
             
         
             #self.rect.x = pos
             #self.rect.y = constantes.LARGO_PISO - self.rect.height
             
-            #self.rect.x = pos
+            self.rect.x = pos
             self.vidas -= 1
 
         self.rect.y += self.mover_y
