@@ -103,9 +103,10 @@ def jugar(pantalla, jugador):
         if jugador_principal.vidas <= 0:
             pygame.mixer.stop()
             pantalla.fill(constantes.NEGRO)
-            #pantalla.blit(logo,(0,0))
-            textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
-            pantalla.blit( textopuntos,(100,100))
+            game = pygame.image.load("imagenes/Gameover.png").convert()
+            pantalla.blit(game,(0,0))
+            #textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
+            #pantalla.blit( textopuntos,(100,100))
             pygame.display.flip()
             pygame.event.wait()
             main()
@@ -144,11 +145,11 @@ def main():
     jugador1 = sprite_sheet.get_image(156,0,141,298)
     sprite_sheet = SpriteSheetNotas("imagenes/personajes.png")
     jugador2 = sprite_sheet.get_image(0,0,151,298)
-    historia = pygame.image.load("imagenes/historiapergamino.png").convert()
-    historia2 = pygame.image.load("imagenes/historiapergaminolvl2pt2.png").convert()
-    historia3 = pygame.image.load("imagenes/historiapergamino.png").convert()
-    historia4 = pygame.image.load("imagenes/historiapergamino.png").convert()
-    historia5 = pygame.image.load("imagenes/historiapergamino.png").convert()
+    historia = pygame.image.load("imagenes/1pergamino.png").convert()
+    historia2 = pygame.image.load("imagenes/2pergamino.png").convert()
+    historia3 = pygame.image.load("imagenes/3pergamino.png").convert()
+    historia4 = pygame.image.load("imagenes/4pergamino.png").convert()
+    historia5 = pygame.image.load("imagenes/5pergamino.png").convert()
     creditos = pygame.image.load("imagenes/spritesdimensiones.png").convert()
     logo = pygame.image.load("imagenes/Logo.png").convert()
     logo.set_colorkey(constantes.BLANCO)
@@ -162,6 +163,8 @@ def main():
     menuJugador = cMenu(250, 300, 20, 5, "horizontal", 4, pantalla, [("Metalero",5,jugador1),("Rastafari",6,jugador2),("Volver",0,None)])
     historia = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",7,historia)])
     historia2 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",8,historia2)])
+    historia3 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",8,historia3)])
+    historia4 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",8,historia4)]) 
     creditos = cMenu (100,125, 630, 348, 'vertical',6,pantalla,[("Creditos",12,creditos)])
     
     #Alineamos el menu
@@ -212,6 +215,14 @@ def main():
                 opcion, estado = historia2.update(e, estado)
                 pygame.display.flip()
             elif estado == 8:
+                pantalla.fill(constantes.NEGRO)
+                opcion, estado = historia3.update(e, estado)
+                pygame.display.flip()
+            elif estado == 9:
+                pantalla.fill(constantes.NEGRO)
+                opcion, estado = historia4.update(e, estado)
+                pygame.display.flip()
+            elif estado == 12:
                 pantalla.fill(constantes.NEGRO)
                 estado = 0
                 pantalla.blit(logo,(0,0))
