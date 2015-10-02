@@ -28,15 +28,14 @@ class Level_02(Level):
         #nivel_puntos = 
 
         #Lista con los bloques de plataformas, indicando la ubicacion x,y y el tipo 
-        nivel = [ [platforma2.PLATAFORMA10, 500, 550],
-                  [platforma2.PLATAFORMA7, 640, 550],
-                  [platforma2.PLATAFORMA8, 800, 550],
-                  [platforma2.PLATAFORMA9, 940, 400],
-                  [platforma2.PLATAFORMA10, 1200,550],
-                  [platforma2.PLATAFORMA8, 1900,300],
-                  [platforma2.PLATAFORMA7, 2200,200],
-                  [platforma2.PLATAFORMA10, 2900,300],
-                  [platforma2.PLATAFORMA8, 3300,400],
+        nivel = [ [platforma2.PLATAFORMA10, 500, 450],
+                  [platforma2.PLATAFORMA8, 800, 450],
+                  [platforma2.PLATAFORMA10, 1200, 400],
+                  [platforma2.PLATAFORMA10,1500,400],
+                  [platforma2.PLATAFORMA8, 1800,350],
+                  [platforma2.PLATAFORMA7, 2200,300],
+                  [platforma2.PLATAFORMA10,2900,550],
+                  [platforma2.PLATAFORMA8, 3300,575],
                   [platforma2.PLATAFORMA7, 3700,500],
                   [platforma2.PLATAFORMA9, 4100,600],
                   [platforma2.PLATAFORMA10, 4500,500],
@@ -190,8 +189,8 @@ class Level_02(Level):
             self.lista_de_cosas_con_puntitos.add(punto)
 
         # Se agrega una plataforma en movimiento.
-        bloque = platforma.PlataformaConMovimiento(platforma.PLATAFORMA3)
-        bloque.rect.x = 1500
+        bloque = platforma2.PlataformaConMovimiento2(platforma2.PLATAFORMA10)
+        bloque.rect.x = 2500
         bloque.rect.y = 300
         bloque.limite_superior = 100
         bloque.limite_inferior = 550

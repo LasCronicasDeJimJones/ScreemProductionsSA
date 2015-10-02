@@ -10,12 +10,14 @@ from menu import cMenu, EVENT_CHANGE_STATE
 from string import center
 from funciones_spritesheet import SpriteSheet
 from funciones_spritesheet import SpriteSheetNotas
+import time
 
 def jugar(pantalla, jugador):
     # Creamos al jugador con la imagen p1_walk.png
     jugador_principal = Player(jugador)
 
     letraparapuntos=pygame.font.SysFont("comicsans",24)
+    #letraTiempo = pygame.font.Font("comicsans", 24)
 
     # Creamos todos los niveles del juego
     lista_niveles = []
@@ -40,6 +42,8 @@ def jugar(pantalla, jugador):
     salir = False
 
     clock = pygame.time.Clock()
+    
+    starting_point = time.time() + 400
     
     # -------- Loop Princiapl -----------
     while not salir:
@@ -99,8 +103,22 @@ def jugar(pantalla, jugador):
                 nivel_actual = lista_niveles[numero_del_nivel_actual]
                 jugador_principal.nivel = nivel_actual
                 nivel_actual.sonido.play(-1)
+                starting_point = time.time() + 400
 
         if jugador_principal.vidas <= 0:
+            pygame.mixer.stop()
+            pantalla.fill(constantes.NEGRO)
+            game = pygame.image.load("imagenes/Gameover.png").convert()
+            pantalla.blit(game,(0,0))
+            #textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
+            #pantalla.blit( textopuntos,(100,100))
+            pygame.display.flip()
+            pygame.event.wait()
+            main()
+            
+        elapsed_time = starting_point - time.time ()
+        elapsed_time_int = int(elapsed_time)    
+        if elapsed_time <= 0:
             pygame.mixer.stop()
             pantalla.fill(constantes.NEGRO)
             game = pygame.image.load("imagenes/Gameover.png").convert()
@@ -123,6 +141,10 @@ def jugar(pantalla, jugador):
         
         textovidas=letraparapuntos.render("Vidas: "+str(jugador_principal.vidas),0, constantes.BLANCO)
         pantalla.blit( textovidas,(10,35))
+        
+        
+        textotiempo = letraparapuntos.render("Tiempo: "+ str(elapsed_time_int), 1, constantes.BLANCO)
+        pantalla.blit(textotiempo, (10,60))
         # TODO EL CODIGO PARA DIBUJAR DEBE IR POR ARRIBA DE ESTE COMENTARIO.
 
         clock.tick(60)
@@ -163,8 +185,9 @@ def main():
     menuJugador = cMenu(250, 300, 20, 5, "horizontal", 4, pantalla, [("Metalero",5,jugador1),("Rastafari",6,jugador2),("Volver",0,None)])
     historia = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",7,historia)])
     historia2 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",8,historia2)])
-    historia3 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",8,historia3)])
-    historia4 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",8,historia4)]) 
+    historia3 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",9,historia3)])
+    historia4 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",10,historia4)])
+    historia5 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",11,historia5)])
     creditos = cMenu (100,125, 630, 348, 'vertical',6,pantalla,[("Creditos",12,creditos)])
     
     #Alineamos el menu
@@ -221,6 +244,14 @@ def main():
             elif estado == 9:
                 pantalla.fill(constantes.NEGRO)
                 opcion, estado = historia4.update(e, estado)
+                pygame.display.flip()
+            elif estado == 10:
+                pantalla.fill(constantes.NEGRO)
+                opcion, estado = historia5.update(e, estado)
+                pygame.display.flip()
+            elif estado == 11:
+                pantalla.blit(logo,(0,0))
+                opcion, estado = menuJuego.update(e,estado)
                 pygame.display.flip()
             elif estado == 12:
                 pantalla.fill(constantes.NEGRO)

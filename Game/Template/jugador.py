@@ -34,7 +34,9 @@ class Player(pygame.sprite.Sprite):
             Aca en donde se debe cargar el sprite sheet del jugador.
             Se debe cargar los sprite con movimiento hacia la izquierda y hacia la derecha.
         """
-
+        self.jugador_frame_izq = []
+        self.jugador_frame_der = []
+        
         pygame.sprite.Sprite.__init__(self)
         if rol==1:
             sprite_sheet = SpriteSheet("imagenes/spritesdimensiones.png") 
@@ -171,7 +173,6 @@ class Player(pygame.sprite.Sprite):
         # Seteamos con que sprite comenzar
         self.image = self.jugador_frame_der[0]
 
-
         self.rect = self.image.get_rect()
 
 
@@ -217,7 +218,10 @@ class Player(pygame.sprite.Sprite):
         lista_de_colision_puntos = pygame.sprite.spritecollide(self, self.nivel.lista_de_cosas_con_puntitos, False)
         for objeto_punto in lista_de_colision_puntos:
             #sumar puntos al jugador
+            
             self.puntos = self.puntos + 10
+            sonidoj = pygame.mixer.Sound("sonido/Puntossonido.ogg")
+            sonidoj.play()
             objeto_punto.kill() 
 
         #verificamos si chocamos con enemigos        
