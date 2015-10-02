@@ -41,27 +41,22 @@ class Level_01(Level):
                           [provisiones.banana, 4000, 100],
                           [provisiones.botiquin, 4900, 100],
                           [provisiones.botella, 6000, 300],
-                          [provisiones.banana, 7000, 90],
-                          [provisiones.botiquin, 8050, 500],#Easteregg
-                          [provisiones.botella, 9000, 300],
+                          [provisiones.banana, 7000, 100],
+                          [provisiones.botella, 9000, 150],
                           [provisiones.banana, 10000, 100],
-                          [provisiones.botiquin, 11000, 90],
-                          [provisiones.botella, 12000, 600],
-                          [provisiones.banana, 13050, 300],
+                          [provisiones.botiquin, 11000, 100],
                           [provisiones.botella, 14000, 200],
                           [provisiones.botiquin, 15000, 400],
                           [provisiones.banana, 16500, 300],
                           [provisiones.botiquin, 17500, 200],
-                          [provisiones.botella, 18500, 300],
-                          [provisiones.banana, 20000, 400],
                           [provisiones.botiquin, 21000, 300],
                           [provisiones.botella, 22000, 200],
                           [provisiones.botella, 24500, 200],
-                          [provisiones.botiquin, 25000, 90],
-                          [provisiones.banana, 26000, 400],
-                          [provisiones.botiquin, 27000, 300],
+                          [provisiones.botiquin, 25000,200],
+                          [provisiones.banana, 26000, 100],
+                          [provisiones.botiquin, 27000, 150],
                           [provisiones.botiquin, 28000, 200],
-                          [provisiones.botiquin, 29000, 400],
+                          [provisiones.botiquin, 29000, 100],
                           [provisiones.botiquin, 30000, 200],
                         ]
                  
@@ -135,8 +130,7 @@ class Level_01(Level):
                   [platforma.PLATAFORMA6, 25300, 300],
                   [platforma.PLATAFORMA6, 25600, 200],
                   [platforma.PLATAFORMA6, 25900, 100],
-                  [platforma.PLATAFORMA6, 26800, 200],
-                  [platforma.PLATAFORMA6, 27100, 300],
+                  [platforma.PLATAFORMA6, 26500, 200],
                   [platforma.PLATAFORMA6, 27400, 300],
                   [platforma.PLATAFORMA6, 27700, 400],
                   [platforma.PLATAFORMA6, 28000, 400],
@@ -154,8 +148,7 @@ class Level_01(Level):
                   [platforma.PLATAFORMA6, 32200, 200],
                   [platforma.PLATAFORMA6, 32500, 300],
                   [platforma.PLATAFORMA6, 32800, 400],      
-                  [platforma.PLATAFORMA6, 27000, 200],
-                  [platforma.PLATAFORMA6, 26500, 300]]
+                  [platforma.PLATAFORMA6, 27000, 200]]
         #Enemigos
         enemigos = [[PINCHO,3000,545],
                     [PINCHO,1250,545],
@@ -172,7 +165,6 @@ class Level_01(Level):
                     [PINCHO,14500,545],
                     [PINCHO,15000,545],
                     [PINCHO,16000,545],
-                    [PINCHO,17500,545],
                     [PINCHO,18000,545],
                     [PINCHO,19600,545],
                     [PINCHO,22000,545],
@@ -195,8 +187,6 @@ class Level_01(Level):
                     [PINCHO,28300,545],
                     [PINCHO,28600,545],
                     [PINCHO,28900,545],
-                    
-                    
                     ]
 
         # Se busca en la lista anterior creada y se le agregan las plataformas al nivel.
@@ -302,15 +292,6 @@ class Level_01(Level):
         bloque.nivel = self
         self.lista_plataformas.add(bloque)
         
-        bloque = platforma.PlataformaConMovimiento(platforma.PLATAFORMA6)
-        bloque.rect.x = 19800
-        bloque.rect.y = 300
-        bloque.limite_izquierdo = 19800
-        bloque.limite_derecho = 20100
-        bloque.mover_x = 1
-        bloque.jugador = self.jugador
-        bloque.nivel = self
-        self.lista_plataformas.add(bloque)
         
         bloque = platforma.PlataformaConMovimiento(platforma.PLATAFORMA6)
         bloque.rect.x = 29800
