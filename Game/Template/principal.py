@@ -172,7 +172,7 @@ def main():
     historia3 = pygame.image.load("imagenes/3pergamino.png").convert()
     historia4 = pygame.image.load("imagenes/4pergamino.png").convert()
     historia5 = pygame.image.load("imagenes/5pergamino.png").convert()
-    creditos = pygame.image.load("imagenes/spritesdimensiones.png").convert()
+    creditos = pygame.image.load("imagenes/creditos.png").convert()
     logo = pygame.image.load("imagenes/Logo.png").convert()
     logo.set_colorkey(constantes.BLANCO)
     alogo = True
@@ -188,7 +188,7 @@ def main():
     historia3 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",9,historia3)])
     historia4 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",10,historia4)])
     historia5 = cMenu (0,0, 600, 800, 'vertical',5,pantalla,[("Historia",11,historia5)])
-    creditos = cMenu (100,125, 630, 348, 'vertical',6,pantalla,[("Creditos",12,creditos)])
+    creditos = cMenu (0,0, 600, 800, 'vertical',6,pantalla,[("Creditos",12,creditos)])
     
     #Alineamos el menu
        
@@ -253,10 +253,9 @@ def main():
                 pantalla.blit(logo,(0,0))
                 opcion, estado = menuJuego.update(e,estado)
                 pygame.display.flip()
-            elif estado == 12:
-                pantalla.fill(constantes.NEGRO)
-                estado = 0
+            elif estado == 12:               
                 pantalla.blit(logo,(0,0))
+                opcion, estado = menuJuego.update(e, estado)
                 pygame.display.flip()
 
             else:

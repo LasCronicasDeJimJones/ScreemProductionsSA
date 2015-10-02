@@ -28,6 +28,7 @@ class Level_01(Level):
         self.sonido = pygame.mixer.Sound("sonido/Playafinal.ogg")
         #sonido.play(-1)
         #nivel_puntos = 
+        
 
         
          
