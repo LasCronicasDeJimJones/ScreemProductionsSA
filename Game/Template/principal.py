@@ -105,15 +105,13 @@ def jugar(pantalla, jugador):
                     jugador_principal.nivel = nivel_actual
                     nivel_actual.sonido.play(-1)
                     starting_point = time.time() + 700
-                else:
-                    pantalla.fill(constantes.NEGRO)
-                    game = pygame.image.load("imagenes/Gameover.png").convert()
-                    pantalla.blit(game,(0,0))
-                    #textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
-                    #pantalla.blit( textopuntos,(100,100))
-                    pygame.display.flip()
-                    pygame.event.wait()
-                    main()
+            else:
+                pantalla.fill(constantes.NEGRO)
+                game = pygame.image.load("imagenes/Fin.png").convert()
+                pantalla.blit(game,(0,0))
+                pygame.display.flip()
+                pygame.event.wait()
+                main()
 
         if jugador_principal.vidas <= 0:
             pygame.mixer.stop()
