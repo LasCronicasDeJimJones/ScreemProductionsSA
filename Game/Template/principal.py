@@ -25,7 +25,7 @@ def jugar(pantalla, jugador):
     lista_niveles.append(Level_02(jugador_principal))
 
     # Seteamos cual es el primer nivel.
-    numero_del_nivel_actual = 1
+    numero_del_nivel_actual = 0
     nivel_actual = lista_niveles[numero_del_nivel_actual]
 
     lista_sprites_activos = pygame.sprite.Group()
