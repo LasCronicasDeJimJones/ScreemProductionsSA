@@ -43,7 +43,7 @@ def jugar(pantalla, jugador):
 
     clock = pygame.time.Clock()
     
-    starting_point = time.time() + 400
+    starting_point = time.time() + 700
     
     # -------- Loop Princiapl -----------
     while not salir:
@@ -104,7 +104,7 @@ def jugar(pantalla, jugador):
                     nivel_actual = lista_niveles[numero_del_nivel_actual]
                     jugador_principal.nivel = nivel_actual
                     nivel_actual.sonido.play(-1)
-                    starting_point = time.time() + 400
+                    starting_point = time.time() + 700
                 else:
                     pantalla.fill(constantes.NEGRO)
                     game = pygame.image.load("imagenes/Gameover.png").convert()
