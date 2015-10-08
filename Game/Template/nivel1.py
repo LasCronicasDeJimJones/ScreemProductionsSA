@@ -25,6 +25,7 @@ class Level_01(Level):
         self.fondo = pygame.image.load("imagenes/Fondolevel1.png").convert()
         self.fondo.set_colorkey(constantes.BLANCO)
         self.limite_nivel = -33095
+        self.limite_izquierdo = 200
         
         self.sonido = pygame.mixer.Sound("sonido/Playafinal.ogg")
         #sonido.play(-1)

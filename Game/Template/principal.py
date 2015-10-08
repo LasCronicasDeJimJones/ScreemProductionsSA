@@ -95,6 +95,16 @@ def jugar(pantalla, jugador):
 
         #Si el jugador se mueve hacia el fin del nivel cambia el jugador al siguiente nivel.
         current_position = jugador_principal.rect.x + nivel_actual.posicion_jugador_nivel
+        #print "current pos: ",  current_position
+        #print "nivel_actual.limite_izquierdo: ",  nivel_actual.limite_izquierdo
+        print "jugador_principal.rect.x: ",  jugador_principal.rect.x
+        print "nivel_actual.posicion_jugador_nivel: ", nivel_actual.posicion_jugador_nivel
+        print "jugador_principal.direccion:: " , jugador_principal.direccion
+        
+        if jugador_principal.direccion == "L":
+            if nivel_actual.posicion_jugador_nivel > 0:
+                if current_position <= nivel_actual.limite_izquierdo:                        
+                    jugador_principal.rect.x = 200
         if current_position < nivel_actual.limite_nivel:
             jugador_principal.rect.x = 120
             if numero_del_nivel_actual < len(lista_niveles)-1:
@@ -118,8 +128,6 @@ def jugar(pantalla, jugador):
             pantalla.fill(constantes.NEGRO)
             game = pygame.image.load("imagenes/Gameover.png").convert()
             pantalla.blit(game,(0,0))
-            #textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
-            #pantalla.blit( textopuntos,(100,100))
             pygame.display.flip()
             pygame.event.wait()
             main()
@@ -138,7 +146,7 @@ def jugar(pantalla, jugador):
             main()
 
 
-        print "current pos: ",  current_position
+        #print "current pos: ",  current_position
                 
         # TODO EL CODIGO PARA DIBUJAR DEBE IR DEBAJO DE ESTE COMENTARIO.
         nivel_actual.draw(pantalla)

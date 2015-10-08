@@ -21,6 +21,7 @@ class Level_02(Level):
         self.fondo = pygame.image.load("imagenes/Fondolevel2.png").convert()
         self.fondo.set_colorkey(constantes.BLANCO)
         self.limite_nivel = -45442
+        self.limite_izquierdo = 200
         
     
         self.sonido = pygame.mixer.Sound("sonido/Bosque.ogg")
