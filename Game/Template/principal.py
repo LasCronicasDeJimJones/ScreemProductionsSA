@@ -97,9 +97,9 @@ def jugar(pantalla, jugador):
         current_position = jugador_principal.rect.x + nivel_actual.posicion_jugador_nivel
         #print "current pos: ",  current_position
         #print "nivel_actual.limite_izquierdo: ",  nivel_actual.limite_izquierdo
-        print "jugador_principal.rect.x: ",  jugador_principal.rect.x
-        print "nivel_actual.posicion_jugador_nivel: ", nivel_actual.posicion_jugador_nivel
-        print "jugador_principal.direccion:: " , jugador_principal.direccion
+        #print "jugador_principal.rect.x: ",  jugador_principal.rect.x
+        #print "nivel_actual.posicion_jugador_nivel: ", nivel_actual.posicion_jugador_nivel
+        #print "jugador_principal.direccion:: " , jugador_principal.direccion
         
         if jugador_principal.direccion == "L":
             if nivel_actual.posicion_jugador_nivel > 0:
@@ -120,8 +120,10 @@ def jugar(pantalla, jugador):
                 game = pygame.image.load("imagenes/Fin.png").convert()
                 pantalla.blit(game,(0,0))
                 pygame.display.flip()
-                pygame.event.wait()
+                time.sleep(5) 
+                pygame.event.wait()                
                 main()
+                
 
         if jugador_principal.vidas <= 0:
             pygame.mixer.stop()
@@ -139,10 +141,8 @@ def jugar(pantalla, jugador):
             pantalla.fill(constantes.NEGRO)
             game = pygame.image.load("imagenes/Gameover.png").convert()
             pantalla.blit(game,(0,0))
-            #textopuntos=letraparapuntos.render("GAME OVER",0, constantes.BLANCO)
-            #pantalla.blit( textopuntos,(100,100))
             pygame.display.flip()
-            pygame.event.wait()
+            pygame.event.wait()            
             main()
 
 
@@ -172,6 +172,7 @@ def jugar(pantalla, jugador):
 def main():
     """ Clase principal en el que se debe ejecutar el juego. """
     pygame.init()
+    print "11111111111111111111111111111111111111111"
 
     # Configuramos el alto y largo de la pantalla
     tamanio = [constantes.ANCHO_PANTALLA, constantes.LARGO_PANTALLA]

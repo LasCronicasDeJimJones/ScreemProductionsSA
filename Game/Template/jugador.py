@@ -215,6 +215,7 @@ class Player(pygame.sprite.Sprite):
                 self.rect.left = block.rect.right
                 
         # Verficamos si colisionamos con algo mientras avanzamos
+        
         lista_de_colision_puntos = pygame.sprite.spritecollide(self, self.nivel.lista_de_cosas_con_puntitos, False)
         for objeto_punto in lista_de_colision_puntos:
             #sumar puntos al jugador
@@ -238,7 +239,7 @@ class Player(pygame.sprite.Sprite):
             
             self.rect.x = pos
             self.vidas -= 1
-
+        
         self.rect.y += self.mover_y
 
         # Verficiamos si colisionamos con algo si saltamos
